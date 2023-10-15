@@ -1,0 +1,145 @@
+JAVA:
+
+1. Create an array with the values (1, 2, 3, 4, 5, 6, 7) and shuffle it.
+
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        shuffleArray(array);
+        
+        System.out.println("Shuffled Array:");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public static void shuffleArray(int[] array) {
+        int n = array.length;
+        Random random = new Random();
+
+        for (int i = n - 1; i > 0; i--) {
+            // Generate a random index between 0 and i (inclusive)
+            int randomIndex = random.nextInt(i + 1);
+
+            // Swap array[i] with the element at randomIndex
+            int temp = array[i];
+            array[i] = array[randomIndex];
+            array[randomIndex] = temp;
+        }
+    }
+}
+
+===========================================================================================
+2. Enter a Roman Number as input and convert it to an integer. (Example: IX = 9)
+
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        String romanNumeral = "IX";
+        int result = romanToInt(romanNumeral);
+        System.out.println("The integer value of " + romanNumeral + " is: " + result);
+    }
+
+    public static int romanToInt(String s) {
+        HashMap<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+
+        int total = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int currentNumeral = romanMap.get(s.charAt(i));
+            if (i < s.length() - 1 && currentNumeral < romanMap.get(s.charAt(i + 1))) {
+                // If the current numeral is smaller than the next numeral, subtract it
+                total -= currentNumeral;
+            } else {
+                total += currentNumeral;
+            }
+        }
+        return total;
+    }
+}
+
+=========================================================================================================
+3. Check if the input is pangram or not. (A pangram is a sentence that contains all the
+alphabets from A to Z)
+
+public class Main {
+    public static void main(String[] args) {
+        String input = "The quick brown fox jumps over the lazy dog";
+        boolean isPangram = isPangram(input);
+        
+        if (isPangram) {
+            System.out.println("The input is a pangram.");
+        } else {
+            System.out.println("The input is not a pangram.");
+        }
+    }
+
+    public static boolean isPangram(String str) {
+        boolean[] alphabet = new boolean[26]; // Boolean array to track occurrence of each letter
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = Character.toLowerCase(str.charAt(i));
+            if (ch >= 'a' && ch <= 'z') {
+                alphabet[ch - 'a'] = true;
+            }
+        }
+
+        // Check if all alphabets have occurred at least once
+        for (boolean letterPresent : alphabet) {
+            if (!letterPresent) {
+                return false; // If any letter is missing, it's not a pangram
+            }
+        }
+
+        return true; // All letters are present, it's a pangram
+    }
+}
+
+======================================================================================================
+JAVASCRIPT:
+
+1. Take a sentence as an input and reverse every word in that sentence.
+Example - This is a sunny day > shiT si a ynnus yad.
+
+function reverseWords(sentence) {
+    // Split the sentence into words
+    let words = sentence.split(' ');
+
+    // Reverse each word in the array
+    let reversedWords = words.map(word => {
+        // Reverse the characters in the word
+        return word.split('').reverse().join('');
+    });
+
+    // Join the reversed words back into a sentence
+    let reversedSentence = reversedWords.join(' ');
+
+    return reversedSentence;
+}
+
+// Example usage
+let inputSentence = "This is a sunny day";
+let reversedSentence = reverseWords(inputSentence);
+console.log(reversedSentence);  // Output: "sihT si a ynnus yad"
+
+
+========================================================================================================
+2. Perform sorting of an array in descending order.
+
+let numbers = [5, 2, 9, 1, 5, 6];
+let sortedArray = [...numbers]; // Create a copy of the original array
+sortedArray.sort(function(a, b) {
+    return b - a;
+});
+
+console.log("Original array: " + numbers);
+console.log("Sorted array in descending order: " + sortedArray);
