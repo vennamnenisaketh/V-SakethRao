@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Inventory Table with Edit Option</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Chemical Inventory</h1>
+
+    <div class="toolbar">
+        <button onclick="addRow()">Add Row</button>
+        <button onclick="moveUp()">Move Up</button>
+        <button onclick="moveDown()">Move Down</button>
+        <button onclick="deleteRow()">Delete Row</button>
+    </div>
+
+    <table border="1" id="chemicalTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Chemical Name</th>
+                <th>Vendor</th>
+                <th>Density</th>
+                <th>Viscosity</th>
+                <th>Packaging</th>
+                <th>Pack Size</th>
+                <th>Unit</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
